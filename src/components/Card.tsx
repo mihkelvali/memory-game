@@ -14,6 +14,7 @@ const Card: FC<Props> = ({ id, imageName, isVisible, isFaceUp, onClick }) => {
   return (
     <div
       onClick={() => {
+        if (!isVisible) return;
         onClick(id);
       }}
       className={`${cardStyles.card} ${!isVisible ? cardStyles.hidden : ''}`}
