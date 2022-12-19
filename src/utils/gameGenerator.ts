@@ -3,7 +3,7 @@ import { Game } from "../types";
 const images = ['001', '004', '007'];
 
 export const generateGame = (): Game => {
-  const cardIdsList = Array(images.length * 2).fill(1).map((x, y) => x + y);
+  const cardIdsList = Array(images.length * 2).fill(0).map((x, y) => x + y);
   const shuffledCardIdsList = cardIdsList
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
