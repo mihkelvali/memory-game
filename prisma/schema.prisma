@@ -10,9 +10,9 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Todo {
+model Scoreboard {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
-  text      String
-  completed Boolean
+  name      String
+  score     Int
 }

@@ -5,3 +5,10 @@ export interface Game {
     isVisible: boolean
   }
 }
+
+export interface Scoreboard {
+  id: number,
+  createdAt: string,
+  name: string,
+  score: number
+}

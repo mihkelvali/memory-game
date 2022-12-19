@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { FC } from "react";
 import styles from "../styles/Header.module.css";
 
-const Header: any = () => (
+const Header: FC = () => (
     <header className={styles.header}>
         <h1 className={styles.title}>
             <Link href="/">Pokèmon memory game</Link>
