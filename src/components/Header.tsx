@@ -7,7 +7,7 @@ const Header: any = () => (
             <Link href="/">Pokèmon memory game</Link>
         </h1>
         <h2 className={styles.headerButtons}>
-            <Link href="/new">New game</Link>
+            <Link href="/new/single">New game</Link>
             <Link href="/scoreboard">Scoreboard</Link>
         </h2>
     </header>
