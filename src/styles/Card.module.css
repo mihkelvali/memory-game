@@ -1,8 +1,21 @@
+.cardContainer {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
 .card {
   height: 140px;
   width: 100px;
   cursor: pointer;
   transition: all 1s;
+}
+
+@media (max-width: 540px) {
+  .card {
+    height: 98px;
+    width: 70px;
+  }
 }
 
 .hidden {

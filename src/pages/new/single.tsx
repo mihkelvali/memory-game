@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import { useImmer } from "use-immer";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Card from "../../components/Card";
 import Header from "../../components/Header";
-import styles from "../../styles/NewSingle.module.css";
+import styles from "../../styles/SingleGame.module.css";
 import { generateGame } from "../../utils/gameGenerator";
 
 enum CardSide {

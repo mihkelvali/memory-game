@@ -1,6 +1,6 @@
 import { Game } from "../types";
 
-const images = ['001', '004', '007'];
+const images = ['001', '004', '007', '016', '019', '021', '023', '025'];
 
 export const generateGame = (): Game => {
   const cardIdsList = Array(images.length * 2).fill(0).map((x, y) => x + y);
