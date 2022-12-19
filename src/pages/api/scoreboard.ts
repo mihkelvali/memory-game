@@ -9,13 +9,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       orderBy: { score: "desc" },
     });
     res.json(scoreboard);
-  }/* else if (req.method === "POST") {
-    // create todo
-    const text = JSON.parse(req.body).text;
-    const todo = await prisma.todo.create({
-      data: { text, completed: false },
+  } else if (req.method === "POST") {
+    const { name, score } = JSON.parse(req.body);
+    const scoreboard = await prisma.scoreboard.create({
+      data: { name, score },
     });
 
-    res.json(todo);
-  }*/
+    res.json(scoreboard);
+  }
 };
