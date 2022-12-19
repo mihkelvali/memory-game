@@ -32,9 +32,8 @@
   border-radius: 10px;
 }
 
-.background {
-  background-image: url("/assets/images/background.jpeg");
-  background-size: cover;
+.background>* {
+  border-radius: 10px;
 }
 
 .foreground {

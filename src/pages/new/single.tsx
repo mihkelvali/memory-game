@@ -18,14 +18,22 @@ const Card: any = () => {
       className={cardStyles.card}
     >
       <div className={`${cardStyles.cardInner} ${isTurned ? cardStyles.turned : ''}`}>
-        <div className={cardStyles.background}></div>
+        <div className={cardStyles.background}>
+          <Image
+            src="/assets/images/background.jpeg"
+            alt="Card"
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+        </div>
         <div className={cardStyles.foreground}>
           <Image
             src={`/assets/images/${imageName}`}
             alt="Card"
             layout="fill"
             objectFit="contain"
-          ></Image>
+          />
         </div>
       </div>
     </div>
