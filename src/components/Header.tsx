@@ -4,7 +4,7 @@ import styles from "../styles/Header.module.css";
 const Header: any = () => (
     <header className={styles.header}>
         <h1 className={styles.title}>
-            <Link href="/">Memory game</Link>
+            <Link href="/">Pokèmon memory game</Link>
         </h1>
         <h2 className={styles.headerButtons}>
             <Link href="/new">New game</Link>

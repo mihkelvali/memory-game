@@ -1,6 +1,7 @@
-export interface Todo {
-  id: string;
-  created: string;
-  text: string;
-  completed: boolean;
+export interface Game {
+  Number?: {
+    image: string,
+    isFaceUp: boolean,
+    isVisible: boolean
+  }
 }

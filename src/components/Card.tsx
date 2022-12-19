@@ -24,7 +24,6 @@ const Card: FC<Props> = ({ id, imageName, isVisible, isFaceUp, onClick }) => {
             src="/assets/images/background.jpeg"
             alt="Card"
             layout="fill"
-            objectFit="cover"
             priority
           />
         </div>

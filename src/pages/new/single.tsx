@@ -5,25 +5,21 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import Header from "../../components/Header";
 import styles from "../../styles/NewSingle.module.css";
+import { generateGame } from "../../utils/gameGenerator";
 
 enum CardSide {
   FACE_UP, FACE_DOWN
 }
 
 const NewGame: NextPage = () => {
-  const [game, setGame] = useImmer({
-    0: { image: '001', isFaceUp: false, isVisible: true, matchingId: 1 },
-    1: { image: '001', isFaceUp: false, isVisible: true, matchingId: 0 },
-    2: { image: '004', isFaceUp: false, isVisible: true, matchingId: 3 },
-    3: { image: '004', isFaceUp: false, isVisible: true, matchingId: 2 },
-    4: { image: '007', isFaceUp: false, isVisible: true, matchingId: 5 },
-    5: { image: '007', isFaceUp: false, isVisible: true, matchingId: 4 },
-  });
+  const [game, setGame] = useImmer(generateGame());
   const [turnedCards, setTurnedCards] = useImmer([]);
   const [madeMoves, setMadeMoves] = useImmer(0);
+  const [allowNextTurn, setAllowNextTurn] = useImmer(true);
   let timer: NodeJS.Timeout;
 
-  const onClick = (id: Number): void => {
+  const onCardClick = (id: Number): void => {
+    if (!allowNextTurn) return;
     turnCard(id, CardSide.FACE_UP);
     setTurnedCards((prev): any => {
       if (!turnedCards.includes(id)) {
@@ -39,9 +35,11 @@ const NewGame: NextPage = () => {
       return;
     }
     setMadeMoves((prev) => ++prev);
+    setAllowNextTurn(false);
     setTimeout(() => {
       setTurnedCards([]);
-      if (isMatchOnTable()) {
+      setAllowNextTurn(true);
+      if (didFindMatchingCards()) {
         console.log('found a match!', turnedCards);
         hideCards(turnedCards);
         return;
@@ -58,12 +56,12 @@ const NewGame: NextPage = () => {
     }
   };
 
-  const isMatchOnTable = (): boolean => {
+  const didFindMatchingCards = (): boolean => {
+    let turnedCardImages = [];
     for (const cardId of turnedCards) {
-      if (turnedCards.includes(game[String(cardId)].matchingId)) {
-        return true;
-      }
+      turnedCardImages.push(game[cardId].image);
     }
+    if (turnedCardImages[0] === turnedCardImages[1]) return true;
     return false;
   }
 
@@ -108,7 +106,7 @@ const NewGame: NextPage = () => {
             imageName={`${card.image}.png`}
             isVisible={card.isVisible}
             isFaceUp={card.isFaceUp}
-            onClick={onClick}
+            onClick={onCardClick}
           />)
         )}
       </div>
