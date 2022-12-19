@@ -90,6 +90,12 @@ const NewGame: NextPage = () => {
     }
   }
 
+  const resetGame = () => {
+    setGame(generateGame());
+    setIsGameWon(false);
+    setMovesCount(0);
+  }
+
   useEffect(() => {
     checkGameStatus();
     if (checkIfGameOver()) {
@@ -115,11 +121,7 @@ const NewGame: NextPage = () => {
         {isGameWon
           ? <GameWon
             movesCount={movesCount}
-            resetGame={() => {
-              setGame(generateGame());
-              setIsGameWon(false);
-              setMovesCount(0);
-            }}
+            resetGame={resetGame}
           />
           : Object.entries(game).map(([id, card]) => (
             <Card

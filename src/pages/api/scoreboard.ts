@@ -6,7 +6,8 @@ const prisma = new PrismaClient();
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     const scoreboard = await prisma.scoreboard.findMany({
-      orderBy: { score: "desc" },
+      take: 15,
+      orderBy: { score: "asc" }
     });
     res.json(scoreboard);
   } else if (req.method === "POST") {
