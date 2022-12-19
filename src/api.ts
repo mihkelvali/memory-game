@@ -1,5 +1,5 @@
 import useSWR, { mutate } from "swr";
-import { Todo } from "./types";
+/*import { Todo } from "./types";
 
 const todoPath = "/api/todos";
 
@@ -39,4 +39,4 @@ export const deleteTodo = async (id: string) => {
   mutate(todoPath, todos => todos.filter(t => t.id !== id), false);
   await fetch(`${todoPath}?todoId=${id}`, { method: "DELETE" });
   mutate(todoPath);
-};
+};*/
