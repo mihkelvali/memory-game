@@ -4,10 +4,9 @@ import styles from "../styles/GameWon.module.css";
 
 type Props = {
   movesCount: number,
-  resetGame: () => void,
 }
 
-const GameWon: FC<Props> = ({ movesCount, resetGame }) => {
+const GameWon: FC<Props> = ({ movesCount }) => {
   const [nameValue, setNameValue] = useState('');
   const [isScoreSubmitted, setIsScoreSubmitted] = useState(false);
 
@@ -34,7 +33,7 @@ const GameWon: FC<Props> = ({ movesCount, resetGame }) => {
       ) : (
         <>
           <span>Score submitted!</span>
-          <a onClick={resetGame} className={styles.playAgain}>Play again!</a>
+          <a href="/new/solo" className={styles.playAgain}>Play again!</a>
         </>
       )}
     </div>

@@ -11,7 +11,7 @@ const Scoreboard: FC = () => {
   if (scoreboard == null) return <div>Loading...</div>;
 
   if (scoreboard.length === 0) {
-    return <div>Scoreboard is empty, <Link href="/new/single">try playing a game!</Link></div>;
+    return <div>Scoreboard is empty, <Link href="/new">try playing a game!</Link></div>;
   }
 
   return (

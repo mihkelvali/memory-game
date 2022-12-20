@@ -8,7 +8,7 @@ const Header: FC = () => (
             <Link href="/">Pokèmon memory game</Link>
         </h1>
         <h2 className={styles.headerButtons}>
-            <a href="/new/single">New game</a>
+            <a href="/new">New game</a>
             <Link href="/scoreboard">Scoreboard</Link>
         </h2>
     </header>

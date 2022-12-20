@@ -13,7 +13,7 @@ const NewGame: NextPage = () => {
             </Head>
             <Header />
             <div className={styles.main}>
-                <Link href="/new/single">Create a new single-player game</Link>
+                <Link href="/new/solo">Create a new single-player game</Link>
                 <Link href="">Create a new multiplayer game</Link>
             </div>
         </div>

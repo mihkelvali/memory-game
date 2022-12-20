@@ -1,24 +1,23 @@
-import { useEffect } from "react";
-import { NextPage } from "next";
-import Head from "next/head";
+import { FC, useEffect } from "react";
+import styles from "../styles/Game.module.css";
 import { useImmer } from "use-immer";
+import { generateGame } from "../utils/gameGenerator";
+import Card from "./Card";
 
-import Card from "../../components/Card";
-import Header from "../../components/Header";
-import styles from "../../styles/SingleGame.module.css";
-import { generateGame } from "../../utils/gameGenerator";
-import GameWon from "../../components/GameWon";
+type Props = {
+  setMovesCount: any,
+  setIsGameWon: (b: boolean) => void,
+}
 
 enum CardSide {
   FACE_UP, FACE_DOWN
 }
 
-const NewGame: NextPage = () => {
+const Game: FC<Props> = ({ setMovesCount, setIsGameWon }) => {
   const [game, setGame] = useImmer(generateGame());
   const [turnedCards, setTurnedCards] = useImmer([]);
-  const [movesCount, setMovesCount] = useImmer(0);
   const [allowNextTurn, setAllowNextTurn] = useImmer(true);
-  const [isGameWon, setIsGameWon] = useImmer(false);
+
   let timer: NodeJS.Timeout;
 
   const onCardClick = (id: Number): void => {
@@ -36,7 +35,7 @@ const NewGame: NextPage = () => {
       console.log('turn another card over ', turnedCards);
       return;
     }
-    setMovesCount((prev) => ++prev);
+    setMovesCount((prev: number) => ++prev);
     setAllowNextTurn(false);
     timer = setTimeout(() => {
       setAllowNextTurn(true);
@@ -90,11 +89,11 @@ const NewGame: NextPage = () => {
     }
   }
 
-  const resetGame = () => {
+  /*const resetGame = () => {
     setGame(generateGame());
     setIsGameWon(false);
     setMovesCount(0);
-  }
+  }*/
 
   useEffect(() => {
     checkGameStatus();
@@ -110,32 +109,19 @@ const NewGame: NextPage = () => {
   }, [])
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Single-player game | Memory game</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-      {!isGameWon && <span>Moves made: {movesCount}</span>}
-      <div className={styles.main}>
-        {isGameWon
-          ? <GameWon
-            movesCount={movesCount}
-            resetGame={resetGame}
-          />
-          : Object.entries(game).map(([id, card]) => (
-            <Card
-              key={id}
-              id={Number(id)}
-              imageName={`${card.image}.png`}
-              isVisible={card.isVisible}
-              isFaceUp={card.isFaceUp}
-              onClick={onCardClick}
-            />)
-          )}
-      </div>
+    <div className={styles.game}>
+      {Object.entries(game).map(([id, card]) => (
+        <Card
+          key={id}
+          id={Number(id)}
+          imageName={`${card.image}.png`}
+          isVisible={card.isVisible}
+          isFaceUp={card.isFaceUp}
+          onClick={onCardClick}
+        />)
+      )}
     </div>
-  );
-};
+  )
+}
 
-export default NewGame
+export default Game;
