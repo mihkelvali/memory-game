@@ -4,7 +4,7 @@ This app is simple a [Memory game](https://www.ultraboardgames.com/memory/game-r
 
 Hosted on [Railway](https://railway.app/).
 
-[Try it out - nextjs-production-de13.up.railway.app!](nextjs-production-de13.up.railway.app) (deployment may be inactive)
+[Try it out - nextjs-production-de13.up.railway.app!](https://nextjs-production-de13.up.railway.app) (deployment may be inactive)
 
 ## 🚀 Features
 
